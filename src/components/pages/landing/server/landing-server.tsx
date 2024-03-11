@@ -6,7 +6,7 @@ export default function LandingServer(){
             <div
                 id="main-header-container"
                 className="mx-auto h-[400px] w-screen overflow-y-scroll bg-cover bg-fixed bg-center bg-no-repeat shadow-lg flex justify-center items-center"
-                style={{backgroundImage: `url('https://www.hdwallpapers.in/download/artistic_landscape_mountains_trees_sunset_purple_sky_background_minimalist_hd_minimalism-1600x900.jpg')`,backgroundPositionY:-400}}>
+                style={{backgroundImage: `url('/assets/landing-background-detailed.jpg')`,backgroundPositionY:-400}}>
 
                 <div id="main-header-parallax" className="hidden">
                     <span className={`

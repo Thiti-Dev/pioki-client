@@ -2,7 +2,8 @@
 const nextConfig = {
     images:{
         remotePatterns: [
-            {hostname:'static.vecteezy.com'}
+            {hostname:'static.vecteezy.com'},
+            {hostname:'pngfre.com'}
         ]
     }
 };
