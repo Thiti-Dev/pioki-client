@@ -1,8 +1,8 @@
 import 'server-only'
+import { PIOKI_Fetch } from '../../fetch'
 
 export function createUser(identifier: string) {
-    console.log("hey")
-  return fetch('http://localhost:8080/api/users',{
+  return PIOKI_Fetch('http://localhost:8080/api/users',{
     headers: {"pioki-identifier":identifier},
     method: "POST"
   })
