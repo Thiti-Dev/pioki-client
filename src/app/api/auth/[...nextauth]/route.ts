@@ -29,7 +29,7 @@ export const authOptions:AuthOptions = {
   callbacks: {
     async signIn(data) {
       const oauthData = data as OAuthData; // casted for explicit known type
-      const createdUser = await createUser(oauthData.user.id)
+      const createdUser = await createUser(oauthData.user.id,oauthData.user.name)
       if(createdUser.status !== 201 && createdUser.status !== 409) return false // 201 means created and 409 for already exist, as we don't have the ability to check whether this user is signing up for first time or not, and for the sake of safety where the registered data disappeared at somepoint (looks expensive but not that expensive)
       return true;
     },
