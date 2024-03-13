@@ -1,5 +1,4 @@
 import { signOut } from "next-auth/react"
-import { useLayoutEffect, useState } from "react"
 
 type Props = {
     name: string
@@ -8,23 +7,13 @@ type Props = {
 }
 
 export default function IAM({imageURL,name,className}: Props){
-    const [avatarURL, setAvatarURL] = useState(imageURL)
-    useLayoutEffect(() => {
-        (async() => {
-            const response = await fetch(imageURL, { method: 'HEAD' });
-            if (response.status !== 200) {
-                // in case if the image returning from oauth isn't accesscible <eg. Facebook unpublished app>
-                setAvatarURL("https://images.vexels.com/media/users/3/135118/isolated/preview/676bf0e9f3c16649cd7f426c6dcd755a-flat-user-sign-with-round-background.png")
-            }
-        })()
-    },[])
     return <div
     className={`max-w-2xl mx-4 sm:max-w-sm md:max-w-sm lg:max-w-sm xl:max-w-sm sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto mt-16 bg-white shadow-xl rounded-lg text-gray-900 ${className}`}>
     <div className="rounded-t-lg h-40 overflow-hidden">
         <img className="object-cover object-top w-full" src='https://user-images.githubusercontent.com/115187902/230700872-d5f44b85-56c7-4e27-80a4-6e2db901e60c.gif' alt='Mountain'/>
     </div>
     <div className="mx-auto w-32 h-32 relative -mt-16 border-4 border-white rounded-full overflow-hidden">
-        <img className="object-cover object-center h-32" src={avatarURL} alt='avatar'/>
+        <img className="object-cover object-center h-32" src={imageURL} alt='oauth_picture'/>
     </div>
     <div className="text-center mt-2">
         <h2 className="font-semibold">{name}</h2>
