@@ -16,7 +16,7 @@ export default withAuth(
       authorized: ({ req, token }) => {
         // This authorized trigger before <middleware<Func>> Above
         if (
-          req.nextUrl.pathname.startsWith('/protected') &&
+          req.nextUrl.pathname.startsWith('/vault') &&
           token === null
         ) {
           return false

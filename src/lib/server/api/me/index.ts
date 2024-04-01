@@ -6,3 +6,10 @@ export function listKeptPostIds(){
       method: "GET"
     })    
   }
+
+export function listKeptPosts(){
+  return PIOKI_Fetch(`http://localhost:8080/api/me/kept_posts`,{
+    headers: {'content-type': "application/json"},
+    method: "GET"
+  })    
+}
