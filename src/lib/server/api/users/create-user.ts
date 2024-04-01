@@ -8,3 +8,10 @@ export function createUser(identifier: string,name:string,pictureURL:string) {
     method: "POST"
   })
 }
+
+export function getUserData(identifier: string){
+  return PIOKI_Fetch('http://localhost:8080/api/users/'+identifier,{
+    headers: {"pioki-identifier":identifier,'content-type': "application/json"},
+    method: "GET"
+  })    
+}
