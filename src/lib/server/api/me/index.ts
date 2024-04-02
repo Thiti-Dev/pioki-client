@@ -13,3 +13,10 @@ export function listKeptPosts(){
     method: "GET"
   })    
 }
+
+export function checkRelationshipStatus(targetUserID: string){
+  return PIOKI_Fetch(`http://localhost:8080/api/me/relationship_status/${targetUserID}`,{
+    headers: {'content-type': "application/json"},
+    method: "GET"
+  })    
+}

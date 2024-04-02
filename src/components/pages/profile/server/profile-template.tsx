@@ -3,8 +3,35 @@ import { workBench } from "@/utils/font"
 import NextImage from "next/image"
 import PostFeed from "../client/post-feed"
 import { ReactNode } from "react"
+import { checkRelationshipStatus } from "@/lib/server/api/me"
+import { getServerSession } from "next-auth"
+import { authOptions } from "@/app/api/auth/[...nextauth]/route"
+import { PIOKIApiResponse } from "@/shared/interfaces/common.interface"
+import { RelationshipStatus } from "@/shared/interfaces/friend.interface"
+import FriendButton from "../client/friend-button"
+import { sendFriendRequest } from "@/lib/server/api/friends"
 
-export default async function ProfileServerTemplate({name,pictureURL,coin,children}: {name: string,userID: string,pictureURL: string,coin: string,children?: ReactNode}){
+
+
+export default async function ProfileServerTemplate({name,pictureURL,coin,children,userID}: {name: string,userID: string,pictureURL: string,coin: string,children?: ReactNode}){
+    const session = await getServerSession(authOptions)
+    const {user:{id}} = session!
+    let isSelf = id === userID
+
+    let status: RelationshipStatus = "none";
+    if(!isSelf){
+        const relationshipRes = await checkRelationshipStatus(userID)
+        if(!relationshipRes.ok) return // server error indicator . . .
+        const relationshipData = await relationshipRes.json() as PIOKIApiResponse<{status: RelationshipStatus}>
+        status = relationshipData.data.status
+    }
+
+    async function sendFriendRequsetAction(): Promise<boolean>{
+        'use server'
+        const res= await sendFriendRequest(userID);
+        return res.ok
+    }
+
     return <>
     <div className="w-screen bg-gray-50 flex flex-row h-[90vh]">
         <div className="py-6">
@@ -12,11 +39,11 @@ export default async function ProfileServerTemplate({name,pictureURL,coin,childr
                 <div className="flex flex-col items-center pb-10 gap-1">
                     <NextImage alt="profile-image" className="rounded-full bg-gray-500" width={250} height={250} src={pictureURL}/>
                     {/* <img className="w-24 h-24 mb-3 rounded-full shadow-lg" src="/docs/images/people/profile-picture-3.jpg" alt="Bonnie image"/> */}
-                    <h5 className="mb-1 text-3xl font-medium text-gray-900 dark:text-white mt-5">{name}</h5>
+                    <h5 className="mb-1 text-2xl font-medium text-gray-900 dark:text-white mt-5">{name}</h5>
                     <span className="text-sm text-gray-500 dark:text-gray-400">PIOKI - Membership</span>
-                    <div className="flex mt-4 md:mt-6">
-                        {/* <a href="#" className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add friend</a> */}
+                    <div className="flex mt-4 md:mt-6 flex-col gap-3">
                         <a className="select-none py-2 px-4 ms-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Total Coin Earned: {coin}</a>
+                        {!isSelf ? <FriendButton relationshipStatus={status} sendFriendRequest={sendFriendRequsetAction}/> : null}
                     </div>
                 </div>
             </div>
