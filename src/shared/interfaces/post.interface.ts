@@ -32,6 +32,10 @@ interface KeptPost{
     keep_data: PostKeeper
 }
 
+interface CreatePostBodyDTO{
+    content:string,spoiler_header:string,quota_limit:number
+}
+
 export type {
-    Post,PostKeeper,KeptPost
+    Post,PostKeeper,KeptPost,CreatePostBodyDTO
 }

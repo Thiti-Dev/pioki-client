@@ -15,7 +15,7 @@ export default async function Profile({params}: {params: {username: string}}) {
     }
     const userData = await userDataRes.json() as PIOKIApiResponse<UserData>
     return (
-        <ProfileServerTemplate name={userData.data.oauth_display_name} userID={params.username} pictureURL={userData.data.oauth_profile_picture}>
+        <ProfileServerTemplate name={userData.data.oauth_display_name} userID={params.username} coin={userData.data.coin_amount} pictureURL={userData.data.oauth_profile_picture}>
             <PostFeed user_id={params.username}/>
         </ProfileServerTemplate>
     );

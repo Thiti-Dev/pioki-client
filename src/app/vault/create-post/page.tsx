@@ -5,8 +5,9 @@ import { PIOKIApiResponse } from "@/shared/interfaces/common.interface";
 import { UserData } from "@/shared/interfaces/user.interface";
 import ProfileServerTemplate from "@/components/pages/profile/server/profile-template";
 import { workBench } from "@/utils/font";
+import Link from "next/link";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import ListKeptPosts from "@/components/pages/vault/client/list-kept-posts";
+import CreatePost from "@/components/pages/vault/client/create-post";
 
 export default async function VaultPage(){
     const session = await getServerSession(authOptions)
@@ -17,9 +18,9 @@ export default async function VaultPage(){
     }
     const userData = await userDataRes.json() as PIOKIApiResponse<UserData>
     return (
-        <ProfileServerTemplate name={userData.data.oauth_display_name} userID={id!} coin={userData.data.coin_amount} pictureURL={userData.data.oauth_profile_picture}>
+        <ProfileServerTemplate name={userData.data.oauth_display_name} userID={id!} pictureURL={userData.data.oauth_profile_picture} coin={userData.data.coin_amount}>
             {/* <PostFeed user_id={params.username}/> */}
-            <ListKeptPosts/>
+            <CreatePost/>
         </ProfileServerTemplate>
     );
 }

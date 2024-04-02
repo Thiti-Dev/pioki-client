@@ -2,6 +2,7 @@
 
 import { PIOKIApiResponse } from "@/shared/interfaces/common.interface"
 import { Post } from "@/shared/interfaces/post.interface"
+import { workBench } from "@/utils/font"
 import { useEffect, useLayoutEffect, useMemo, useState } from "react"
 
 export default function PostFeed({user_id}: {user_id: string}){
@@ -63,7 +64,7 @@ export default function PostFeed({user_id}: {user_id: string}){
         )
         if(!posts.length) return null // returns empty box indicator
         return <>
-                <ul aria-label="Activity feed" role="feed" className="relative flex flex-col gap-12 py-12 pl-6 before:absolute before:top-0 before:left-6 before:h-full before:border before:-translate-x-1/2 before:border-slate-200 before:border-dashed after:absolute after:top-6 after:left-6 after:bottom-6 after:border after:-translate-x-1/2 after:border-slate-200 ">
+                <ul aria-label="Activity feed" role="feed" className={`relative flex flex-col gap-12 py-12 pl-6 before:absolute before:top-0 before:left-6 before:h-full before:border before:-translate-x-1/2 before:border-slate-200 before:border-dashed after:absolute after:top-6 after:left-6 after:bottom-6 after:border after:-translate-x-1/2 after:border-slate-200 ${workBench.className}`}>
                 {
                     posts.map((post,index) => {
                         const isOwned = keptPostIds[post.id]
@@ -75,7 +76,7 @@ export default function PostFeed({user_id}: {user_id: string}){
                     </svg>
                     </span>
                     <div className="flex flex-col flex-1 gap-0">
-                        <h4 className="text-sm font-medium text-slate-700"> {post.spoiler_header ?? 'Untitiled'} </h4>
+                        <h4 className="text-lg font-medium text-slate-700"> {post.spoiler_header ?? 'Untitiled'} </h4>
                         <p className="text-xs text-slate-500">{post.created_at.substring(0, 10)}</p>
                         <p className="text-xs text-slate-400 p-1"><span className="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-green-400 border border-green-400">Initial-Quota: {post.origin_quota_limit}</span> <span className="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-yellow-300 border border-yellow-300">Quota-left: {post.quota_left}</span> {keptPostIds[post.id] ? <span className="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-red-400 border border-red-400">Owned</span> : null}</p>
                         {!isOwned && post.quota_left>0 ? 
@@ -84,7 +85,7 @@ export default function PostFeed({user_id}: {user_id: string}){
                                         <div
                                             className="absolute transitiona-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt">
                                         </div>
-                                        <a href="#" onClick={() => onPostKeepHandler(post.id)} title="Get quote now" 
+                                        <a onClick={() => onPostKeepHandler(post.id)} title="Get quote now" 
                                             className={`relative inline-flex items-center justify-center px-5 py-2 text-xs font-bold text-black transition-all duration-200 bg-white font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900`}
                                             role="button"> Keep
                                         </a>

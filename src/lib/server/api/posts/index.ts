@@ -1,3 +1,4 @@
+import { CreatePostBodyDTO } from "@/shared/interfaces/post.interface";
 import { PIOKI_Fetch } from "../../fetch";
 
 export function getUserPosts(identifier: string){
@@ -20,3 +21,18 @@ export function keepPost(postID: number){
       method: "POST"
     })    
   }
+
+export function passPost(postID: number){
+  return PIOKI_Fetch(`http://localhost:8080/api/posts/${postID}/pass`,{
+    headers: {'content-type': "application/json"},
+    method: "POST"
+  })    
+}
+
+export function createPost(data: CreatePostBodyDTO){
+  return PIOKI_Fetch(`http://localhost:8080/api/posts`,{
+    headers: {'content-type': "application/json"},
+    body: JSON.stringify(data),
+    method: "POST"
+  })    
+}
