@@ -1,4 +1,5 @@
 import { signOut } from "next-auth/react"
+import Link from "next/link"
 
 type Props = {
     name: string
@@ -43,8 +44,21 @@ export default function IAM({imageURL,name,className}: Props){
             <div>28k</div>
         </li>
     </ul>
-    <div className="p-4 border-t mx-8 mt-2">
-        <button onClick={() => signOut({callbackUrl:"/#auth",redirect:false})} className="w-1/2 block mx-auto rounded-full bg-gray-900 hover:shadow-lg font-semibold text-white px-6 py-2">Logout</button>
+    <div className="p-4 border-t mx-8 mt-2 flex flex-col gap-3">
+        <div className="flex flex-wrap justify-center">
+                <Link href={"/vault"}>
+                    <p className="relative">
+                        <span className="absolute top-0 left-0 mt-1 ml-1 h-full w-full rounded bg-black"></span>
+                        <span className="active:bg-gray-700 select-none fold-bold relative inline-block h-full w-full rounded border-2 border-black bg-white px-3 py-1 text-base font-bold text-black transition duration-100 hover:bg-yellow-400 hover:text-gray-900 min-w-[300px] text-center">MY VAULT</span>
+                    </p>
+                </Link>
+        </div>
+        <div onClick={() => signOut({callbackUrl:"/#auth",redirect:false})} className="flex flex-wrap justify-center">
+                    <p className="relative">
+                        <span className="absolute top-0 left-0 mt-1 ml-1 h-full w-full rounded bg-black"></span>
+                        <span className="active:bg-gray-700 select-none fold-bold relative inline-block h-full w-full rounded border-2 border-black bg-white px-3 py-1 text-base font-bold text-black transition duration-100 hover:bg-yellow-400 hover:text-gray-900 min-w-[300px] text-center">LOGOUT</span>
+                    </p>
+        </div>
     </div>
 </div>
 }
