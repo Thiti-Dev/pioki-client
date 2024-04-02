@@ -26,7 +26,7 @@ export default function CreatePost(){
     }
 
     return <>
-        <VirtualCli<VirtualCLIInput> onPromptSatisfied={onProceedToCreatePostHandler} instructions={[
+        <VirtualCli<VirtualCLIInput> cliTitle="Post creation" onPromptSatisfied={onProceedToCreatePostHandler} instructions={[
         {
             name: "title",
             prompt:"What would be your title",

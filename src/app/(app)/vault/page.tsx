@@ -1,6 +1,6 @@
 import { getUserData } from "@/lib/server/api/users/create-user";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../api/auth/[...nextauth]/route";
+import { authOptions } from "../../api/auth/[...nextauth]/route";
 import NotFound from "@/components/common/not-found";
 import { PIOKIApiResponse } from "@/shared/interfaces/common.interface";
 import { UserData } from "@/shared/interfaces/user.interface";

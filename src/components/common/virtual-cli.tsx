@@ -13,6 +13,7 @@ type Instruction = {
 }
 
 type Props<T> = {
+    cliTitle?: string
     onPromptSatisfied: (input: T) => void
     instructions: Instruction[]
 }
@@ -82,7 +83,7 @@ export default function VirtualCli<T = Record<string,any>>(props: Props<T>){
     
     return <div className="flex flex-col lg:p-20 justify-center justify-items-center w-full h-full animate-in fade-in zoom-in">
     <div className={`bg-gray-800 h-12 rounded-t-lg text-yellow-500 ${workBench.className} flex items-center justify-between`}>
-      <span className="ml-5 text-xl">📟 PIOKI Virutal Terminal</span>
+      <span className="ml-5 text-xl">📟 PIOKI Virutal Terminal {props.cliTitle ? `( ${[props.cliTitle]} )` : null}</span>
       <Link href="/vault">
         <span className="mr-4 float-right text-red-600 hover:text-white text-2xl cursor-pointer select-none">X</span>
       </Link>
@@ -97,7 +98,7 @@ export default function VirtualCli<T = Record<string,any>>(props: Props<T>){
                 <>
                     <span>{">"}:</span> 
                         {isWaitingForInput ? 
-                            <input ref={inputRef} className="bg-transparent outline-none" onKeyDown={onEnterHandler}/>
+                            <input ref={inputRef} className="bg-transparent outline-none w-full" onKeyDown={onEnterHandler}/>
                         : 
                         
                         <Typewriter options={{delay:20}} onInit={(typewriter) => {
