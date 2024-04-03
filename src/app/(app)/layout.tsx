@@ -12,7 +12,7 @@ export default async function AppLayout({
     const {user:{id}} = session!
     return (
       <section>
-        <div className={`px-4 mx-auto max-w-7xl sm:px-6 h-[10vh] ${workBench.className}`}>
+        <div className={`px-4 w-full mx-auto max-w-7xl_ sm:px-6 h-[10vh] ${workBench.className} bg-gray-800 rounded-b-lg`}>
             <div className="relative pt-6 pb-16 sm:pb-24">
                 <nav className="relative flex items-center justify-between sm:h-10 md:justify-center" aria-label="Global">
                     <div className="flex items-center flex-1 md:absolute md:inset-y-0 md:left-0">

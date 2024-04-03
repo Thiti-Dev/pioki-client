@@ -1,5 +1,6 @@
 'use client'
 
+import EmptyIndicator from "@/components/common/empty-indicator";
 import { Friend } from "@/shared/interfaces/friend.interface";
 import { workBench } from "@/utils/font";
 import Link from "next/link";
@@ -30,6 +31,10 @@ export default function FriendList({friends}: Props){
     </div>
     <ul className="divide-y divide-gray-200">
         {renderedFriends}
+
+        {!friends.length ?         <li className="flex items-center py-4 px-6 hover:bg-gray-300 cursor-pointer">
+            <EmptyIndicator message="Sadly . . . No friends are found to display"/>
+        </li> : null}
     </ul>
 </div>
     </>

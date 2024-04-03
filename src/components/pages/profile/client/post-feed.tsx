@@ -1,5 +1,6 @@
 'use client'
 
+import EmptyIndicator from "@/components/common/empty-indicator"
 import { PIOKIApiResponse } from "@/shared/interfaces/common.interface"
 import { Post } from "@/shared/interfaces/post.interface"
 import { workBench } from "@/utils/font"
@@ -62,7 +63,9 @@ export default function PostFeed({user_id}: {user_id: string}){
                 </div>
             </>
         )
-        if(!posts.length) return null // returns empty box indicator
+        if(!posts.length) return <div className={`${workBench.className} w-full h-full`}>
+            <EmptyIndicator message="No posts are found . . ."/>
+        </div>
         return <>
                 <ul aria-label="Activity feed" role="feed" className={`relative flex flex-col gap-12 py-12 pl-6 before:absolute before:top-0 before:left-6 before:h-full before:border before:-translate-x-1/2 before:border-slate-200 before:border-dashed after:absolute after:top-6 after:left-6 after:bottom-6 after:border after:-translate-x-1/2 after:border-slate-200 ${workBench.className}`}>
                 {

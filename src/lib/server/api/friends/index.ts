@@ -20,3 +20,10 @@ export function sendFriendRequest(targetUserID:string){
       method: "POST"
   })    
   }
+
+  export function removeFriend(targetUserID:string){ // can also be used to decline the requested made or pending request
+    return PIOKI_Fetch(`http://localhost:8080/api/users/${targetUserID}/remove-friend`,{
+        headers: {'content-type': "application/json"},
+        method: "POST"
+    })    
+    }
