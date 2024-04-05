@@ -20,7 +20,7 @@ export default function IAM({imageURL,name,className}: Props){
         <h2 className="font-semibold">{name}</h2>
         <p className="text-gray-500">PIOKI's member</p>
     </div>
-    <ul className="py-4 mt-2 text-gray-700 flex items-center justify-around">
+    {/* <ul className="py-4 mt-2 text-gray-700 flex items-center justify-around">
         <li className="flex flex-col items-center justify-around">
             <svg className="w-4 fill-current text-blue-900" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                 <path
@@ -43,7 +43,7 @@ export default function IAM({imageURL,name,className}: Props){
   
             <div>28k</div>
         </li>
-    </ul>
+    </ul> */}
     <div className="p-4 border-t mx-8 mt-2 flex flex-col gap-3">
         <div className="flex flex-wrap justify-center">
                 <Link href={"/vault"}>

@@ -26,11 +26,11 @@ export default function Developers(){
                         </p>
                     </div>
                     <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                        ~16
+                        ~INF
                     </div>
                 </div>
             </li>
-            <li className="py-3 sm:py-4">
+            {/* <li className="py-3 sm:py-4">
                 <div className="flex items-center">
                     <div className="flex-shrink-0">
                         <img className="w-8 h-8 rounded-full" src="https://avatars.githubusercontent.com/u/54204982?v=4" alt="Neil image"/>
@@ -47,7 +47,7 @@ export default function Developers(){
                         ~1
                     </div>
                 </div>
-            </li>
+            </li> */}
         </ul>
    </div>
 </div>
