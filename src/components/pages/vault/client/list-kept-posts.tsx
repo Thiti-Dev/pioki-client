@@ -8,6 +8,7 @@ import NextImage from 'next/image'
 import { workBench } from "@/utils/font"
 import Typewriter from 'typewriter-effect';
 import Link from "next/link"
+import LoadingIndicator from "@/components/common/loading-indicator"
 
 export default function ListKeptPosts(){
 
@@ -58,10 +59,15 @@ export default function ListKeptPosts(){
 
 
     const renderedKeptPost = useMemo(() => {
-        if(keptPosts === null) return null // loading inidicator
+        if(!keptPosts) return (
+<                               div className={`w-full h-full flex justify-center ${workBench.className}`}>
+                                        <LoadingIndicator/>
+                                </div>
+
+        )
         if(!keptPosts.length) return null // shows empty result
 
-        return keptPosts.map((data,data_index) => data.postDatas.length ? (<li key={data_index} role="article" className={`relative pl-8 ${workBench.className} tracking-widest animate-in slide-in-from-left duration-500`}>
+        const renderedKeptPost = keptPosts.map((data,data_index) => data.postDatas.length ? (<li key={data_index} role="article" className={`relative pl-8 ${workBench.className} tracking-widest animate-in slide-in-from-left duration-500`}>
         <div className="flex flex-col flex-1 gap-4">
         <Link href={`/profile/${data.userData.pioki_id}`} className="cursor-pointer">
             <div className="absolute z-10 inline-flex items-center justify-center w-8 h-8 text-white rounded-full -left-4 ring-2 ring-white">
@@ -125,11 +131,15 @@ export default function ListKeptPosts(){
         </div>
     </li>): null)
 
+        return <ul aria-label="Kept posts feed" role="feed" className="relative flex flex-col gap-12 py-12 pl-8 before:absolute before:top-0 before:left-8 before:h-full before:border before:-translate-x-1/2 before:border-slate-200 before:border-dashed after:absolute after:top-6 after:left-8 after:bottom-6 after:border after:-translate-x-1/2 after:border-slate-200">
+
+            {renderedKeptPost}
+        </ul>
+    
+
     }, [keptPosts,currentlySeeking,isExtraPanelReady])
 
     return <>
-        <ul aria-label="Kept posts feed" role="feed" className="relative flex flex-col gap-12 py-12 pl-8 before:absolute before:top-0 before:left-8 before:h-full before:border before:-translate-x-1/2 before:border-slate-200 before:border-dashed after:absolute after:top-6 after:left-8 after:bottom-6 after:border after:-translate-x-1/2 after:border-slate-200">
             {renderedKeptPost}
-        </ul>
     </>
 }
