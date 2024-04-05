@@ -15,3 +15,10 @@ export function getUserData(identifier: string){
     method: "GET"
   })    
 }
+
+export function getAllUsers(){
+  return PIOKI_Fetch('http://localhost:8080/api/users',{
+    headers: {'content-type': "application/json"},
+    method: "GET"
+  })    
+}
