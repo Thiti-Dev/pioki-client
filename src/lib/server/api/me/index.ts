@@ -20,3 +20,10 @@ export function checkRelationshipStatus(targetUserID: string){
     method: "GET"
   })    
 }
+
+export function getPostFeeds(){
+  return PIOKI_Fetch('http://localhost:8080/api/me/feeds',{
+      headers: {'content-type': "application/json"},
+      method: "GET"
+  })    
+}

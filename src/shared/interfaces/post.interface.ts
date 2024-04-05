@@ -1,5 +1,7 @@
 import { UserData } from "./user.interface";
 
+type FeedPost = Omit<Post,'user'> & Pick<UserData,'oauth_display_name' | 'oauth_profile_picture'>
+
 interface Post {
     id: number;
     creator_id: string;
@@ -37,5 +39,5 @@ interface CreatePostBodyDTO{
 }
 
 export type {
-    Post,PostKeeper,KeptPost,CreatePostBodyDTO
+    Post,PostKeeper,KeptPost,CreatePostBodyDTO,FeedPost
 }
