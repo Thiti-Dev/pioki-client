@@ -49,6 +49,12 @@ export default async function AppLayout({
                                    >Feed</div>
                             </Link>
                         </li>
+                        <li>
+                            <Link href={`/discovery`}>
+                                <div className="select-none cursor-pointer text-base font-normal text-gray-500 list-none hover:text-gray-900"
+                                   >Discover people</div>
+                            </Link>
+                        </li>
                     </div>
                     <div className="_hidden_ md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0">
                         <div className="inline-flex rounded-full shadow gap-2">
