@@ -89,7 +89,7 @@ export default function LandingClient(){
                     <NextImage alt="astro2" width={600} height={600} src={"https://static.vecteezy.com/system/resources/previews/022/996/348/original/space-astronaut-transparent-free-png.png"}/>
                 </div>
                 <div className={`self-center ${s2InView ? 'animate-in slide-in-from-right duration-1000' : ''} md:w-3/4 lg:w-auto flex justify-center items-center mt-5 sm:mt-0`}>
-                    <StatisticSection/>
+                    <StatisticSection inView={s2InView}/>
                 </div>
             </div>
             <div id="auth-section" className="flex flex-col">
