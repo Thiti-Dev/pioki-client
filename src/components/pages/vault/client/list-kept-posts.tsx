@@ -9,6 +9,7 @@ import { workBench } from "@/utils/font"
 import Typewriter from 'typewriter-effect';
 import Link from "next/link"
 import LoadingIndicator from "@/components/common/loading-indicator"
+import EmptyIndicator from "@/components/common/empty-indicator"
 
 export default function ListKeptPosts(){
 
@@ -65,7 +66,7 @@ export default function ListKeptPosts(){
                                 </div>
 
         )
-        if(!keptPosts.length) return null // shows empty result
+        if(!keptPosts.length) return <EmptyIndicator className={workBench.className} message="No posts have been kept yet . . ."/>
 
         const renderedKeptPost = keptPosts.map((data,data_index) => data.postDatas.length ? (<li key={data_index} role="article" className={`relative pl-8 ${workBench.className} tracking-widest animate-in slide-in-from-left duration-500`}>
         <div className="flex flex-col flex-1 gap-4">
