@@ -46,7 +46,7 @@ export default function DiscoveryPane(props: Props){
         <Image className="w-full" src='https://user-images.githubusercontent.com/115187902/230700872-d5f44b85-56c7-4e27-80a4-6e2db901e60c.gif' alt='BG' fill/>
     </div>
     <div className="mx-auto w-32 h-32 relative -mt-16 border-4 border-white rounded-full overflow-hidden">
-        <Image src={displaying.oauth_profile_picture} alt='profile pic' height={32} width={32}/>
+        <Image className="bg-gray-200" src={displaying.oauth_profile_picture} alt='profile pic' fill/>
     </div>
     <div className="text-center mt-2">
         <h2 className="font-semibold">{displaying.oauth_display_name}</h2>
