@@ -12,7 +12,7 @@ import IAM from "./iam";
 import { loadImage } from "@/utils/listeners/image";
 
 
-function initailize(flag: MutableRefObject<boolean>,cb: () => void){
+function Initailize(flag: MutableRefObject<boolean>,cb: () => void){
     return useLayoutEffect(() => {
         if(!flag.current){
             flag.current = true
@@ -46,7 +46,7 @@ function initailize(flag: MutableRefObject<boolean>,cb: () => void){
 export default function LandingClient(){
     const initialized = useRef(false) // required in dev-mode as react's strictmode germinates rendering twice
     const [headerLoaded,setHeaderLoaded] = useState(false)
-    initailize(initialized,() => setHeaderLoaded(true)) // just messing around :P
+    Initailize(initialized,() => setHeaderLoaded(true)) // just messing around :P
 
 
     const { ref: s1Ref, inView: s1InView } = useInView({

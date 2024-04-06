@@ -11,7 +11,7 @@ type Props = {
 
 export default function FriendList({friends}: Props){
 
-    const renderedFriends = friends.map((friend,index) => <Link href={`/profile/${friend.pioki_id}`}>
+    const renderedFriends = friends.map((friend,index) => <Link key={index} href={`/profile/${friend.pioki_id}`}>
     
     <li className="flex items-center py-4 px-6 hover:bg-gray-300 cursor-pointer">
     <span className="text-gray-700 text-lg font-medium mr-4">{index+1}.</span>

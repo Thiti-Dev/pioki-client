@@ -1,7 +1,7 @@
+import { authOptions } from "@/lib/server/next-auth"
 import { workBench } from "@/utils/font"
 import { getServerSession } from "next-auth"
 import Link from "next/link"
-import { authOptions } from "../api/auth/[...nextauth]/route"
 
 export default async function AppLayout({
     children, // will be a page or nested layout

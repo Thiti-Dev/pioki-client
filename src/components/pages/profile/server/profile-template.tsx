@@ -5,11 +5,11 @@ import PostFeed from "../client/post-feed"
 import { ReactNode } from "react"
 import { checkRelationshipStatus } from "@/lib/server/api/me"
 import { getServerSession } from "next-auth"
-import { authOptions } from "@/app/api/auth/[...nextauth]/route"
 import { PIOKIApiResponse } from "@/shared/interfaces/common.interface"
 import { RelationshipStatus } from "@/shared/interfaces/friend.interface"
 import FriendButton from "../client/friend-button"
 import { sendFriendRequest } from "@/lib/server/api/friends"
+import { authOptions } from "@/lib/server/next-auth"
 
 
 

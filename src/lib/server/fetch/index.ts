@@ -1,7 +1,7 @@
 import "server-only"
 import type { NaiveFetchParameter } from "./types";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "../next-auth";
 
 export async function PIOKI_Fetch(...args: NaiveFetchParameter){
     const session = await getServerSession(authOptions) // authOptions required to see additional data added in callback

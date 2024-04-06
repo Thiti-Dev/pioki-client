@@ -1,4 +1,3 @@
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { sendFriendRequest } from "@/lib/server/api/friends";
 import { checkRelationshipStatus } from "@/lib/server/api/me";
 import { PIOKIApiResponse } from "@/shared/interfaces/common.interface";
@@ -11,6 +10,7 @@ import { ReactNode } from "react";
 import { getUserData } from "@/lib/server/api/users/create-user";
 import NotFound from "./not-found";
 import { UserData } from "@/shared/interfaces/user.interface";
+import { authOptions } from "@/lib/server/next-auth";
 
 type Props = {
     children?: ReactNode

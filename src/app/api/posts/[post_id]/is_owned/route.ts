@@ -1,10 +1,10 @@
 import { checkIfPostOwnedByUser } from "@/lib/server/api/posts"
 import { PIOKIApiResponse } from "@/shared/interfaces/common.interface"
 import { PostKeeper } from "@/shared/interfaces/post.interface"
-import { NextApiRequest } from "next"
+import { NextRequest } from "next/server"
 
 export async function GET(
-    req: NextApiRequest,
+    req: NextRequest,
     {params}: {params: {post_id: string}}
   ) {
 

@@ -1,8 +1,8 @@
 import { passPost } from "@/lib/server/api/posts"
-import { NextApiRequest } from "next"
+import { NextRequest } from "next/server"
 
 export async function POST(
-    req: NextApiRequest,
+    req: NextRequest,
     {params}: {params: {post_id: string}}
   ) {
 

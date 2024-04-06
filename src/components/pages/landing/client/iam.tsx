@@ -18,7 +18,7 @@ export default function IAM({imageURL,name,className}: Props){
     </div>
     <div className="text-center mt-2">
         <h2 className="font-semibold">{name}</h2>
-        <p className="text-gray-500">PIOKI's member</p>
+        <p className="text-gray-500">PIOKI&apos;s member</p>
     </div>
     {/* <ul className="py-4 mt-2 text-gray-700 flex items-center justify-around">
         <li className="flex flex-col items-center justify-around">

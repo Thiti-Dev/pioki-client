@@ -1,6 +1,5 @@
 import { createPost } from "@/lib/server/api/posts"
 import { CreatePostBodyDTO } from "@/shared/interfaces/post.interface"
-import { NextApiRequest } from "next"
 import { NextRequest } from "next/server"
 
 export async function POST(

@@ -2,7 +2,7 @@ import { workBench } from "@/utils/font";
 import Link from "next/link";
 import ProfileTemplate from "@/components/common/profile-template";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/lib/server/next-auth";
 
 export default async function VaultPage(){
     const session = await getServerSession(authOptions)

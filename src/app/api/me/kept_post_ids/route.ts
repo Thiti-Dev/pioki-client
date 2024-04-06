@@ -1,10 +1,10 @@
 import { listKeptPostIds } from "@/lib/server/api/me"
 import { PIOKIApiResponse } from "@/shared/interfaces/common.interface"
 import { PostKeeper } from "@/shared/interfaces/post.interface"
-import { NextApiRequest } from "next"
+import { NextRequest } from "next/server"
 
 export async function GET(
-    req: NextApiRequest,
+    req: NextRequest,
   ) {
         const res = await listKeptPostIds()
         try {

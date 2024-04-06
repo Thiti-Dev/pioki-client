@@ -1,9 +1,9 @@
 import { keepPost } from "@/lib/server/api/posts"
 import { PostKeeper } from "@/shared/interfaces/post.interface"
-import { NextApiRequest } from "next"
+import { NextRequest } from "next/server"
 
 export async function POST(
-    req: NextApiRequest,
+    req: NextRequest,
     {params}: {params: {post_id: string}}
   ) {
 

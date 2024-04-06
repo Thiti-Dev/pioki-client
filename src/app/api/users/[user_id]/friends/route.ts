@@ -1,8 +1,8 @@
 import { getFriendList } from "@/lib/server/api/friends"
-import { NextApiRequest } from "next"
+import { NextRequest } from "next/server"
 
 export async function GET(
-    req: NextApiRequest,
+    req: NextRequest,
     {params}: {params: {user_id: string}}
   ) {
         const res = await getFriendList(params.user_id)
