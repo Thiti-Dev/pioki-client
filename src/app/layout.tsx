@@ -3,14 +3,15 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { SessionProvider } from "@/providers/next-auth";
 import NextTopLoader from 'nextjs-toploader';
+import Head from "next/head";
 
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "PIOKI",
-  description: "You pass it along or keep it alone?",
-};
+  title: '(PIOKI) - 💛',
+  description: 'Have fun socializing yourself up with the fascinating system . . .',
+}
 
 export default function RootLayout({
   children,
