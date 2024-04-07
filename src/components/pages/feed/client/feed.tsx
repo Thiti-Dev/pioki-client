@@ -151,7 +151,7 @@ export default function FeedList(){
                 </ul>
             </div>
         )
-    },[feeds,isDoingFakeFetching])
+    },[feeds,isDoingFakeFetching,isKeepingPost])
 
     return <>
         {renderedFeedList}

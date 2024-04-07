@@ -143,7 +143,7 @@ export default function ListKeptPosts(){
         </ul>
     
 
-    }, [keptPosts,currentlySeeking,isExtraPanelReady])
+    }, [keptPosts,currentlySeeking,isExtraPanelReady,isKeepingPost])
 
     return <>
             {renderedKeptPost}

@@ -157,7 +157,7 @@ export default function PostFeed({user_id}: {user_id: string}){
                 </li> */}
                 </ul>
         </>
-    },[posts,keptPostIds])
+    },[posts,keptPostIds,isKeepingPost])
 
     return <>
         {renderedPosts}
