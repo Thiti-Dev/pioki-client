@@ -98,8 +98,8 @@ export default function LandingClient(){
                 {sessionStatus === 'authenticated' ?
                 <IAM name={session.user.name!} imageURL={session!.user.image!} className="mb-20"/>
                 : null}
-                <div onClick={() => signIn('google')}  className="flex items-center justify-center dark:bg-gray-800">
-                    <button className="w-full px-4 py-2 border flex gap-2 border-slate-200 dark:border-slate-700 rounded-lg text-slate-700 dark:text-slate-200 hover:border-slate-400 dark:hover:border-slate-500 hover:text-slate-900 dark:hover:text-slate-300 hover:shadow transition duration-150 justify-center">
+                <div onClick={() => signIn('google')}  className="flex items-center justify-center bg-gray-800">
+                    <button className="w-full px-4 py-2 border flex gap-2 border-slate-700 rounded-lg text-slate-200 hover:border-slate-500 hover:text-slate-300 hover:shadow transition duration-150 justify-center">
                     <div className={`w-${sessionStatus === 'authenticated' ? '80' : '60'} flex flex-row`}>
                             <img className="w-6 h-6" src="https://www.svgrepo.com/show/475656/google-color.svg" loading="lazy" alt="google logo"/>
                             <span className={`${workBench.className} flex-1 text-left pl-5`}>Login with {sessionStatus === 'authenticated' ? "another" : null} Google</span>
@@ -111,8 +111,8 @@ export default function LandingClient(){
                     // Has to wait for the app to be published
                     // Too much paper works have to be submited
                     // signIn('facebook')
-                }}  className="flex items-center justify-center dark:bg-gray-800">
-                    <button className="w-full px-4 py-2 border flex gap-2 border-slate-200 dark:border-slate-700 rounded-lg text-slate-700 dark:text-slate-200 hover:border-slate-400 dark:hover:border-slate-500 hover:text-slate-900 dark:hover:text-slate-300 hover:shadow transition duration-150 justify-center">
+                }}  className="flex items-center justify-center bg-gray-800">
+                    <button className="w-full px-4 py-2 border flex gap-2 border-slate-700 rounded-lg text-slate-200 hover:border-slate-500 hover:text-slate-300 hover:shadow transition duration-150 justify-center">
                         <div className={`w-${sessionStatus === 'authenticated' ? '80' : '60'} flex flex-row`}>
                             <img className="w-6 h-6" src="https://w7.pngwing.com/pngs/991/568/png-transparent-facebook-logo-computer-icons-facebook-logo-facebook-thumbnail.png" loading="lazy" alt="facebook logo"/>
                             <span className={`${workBench.className} flex-1 text-left pl-5`}>Login with {sessionStatus === 'authenticated' ? "another" : null} Facebook (Disabled)</span>

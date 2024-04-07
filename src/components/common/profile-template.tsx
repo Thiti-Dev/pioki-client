@@ -52,10 +52,10 @@ export default async function ProfileTemplate({children,userID}: Props){
                 <div className="flex flex-col items-center pb-10 gap-1">
                     <Image alt="profile-image" className="rounded-full bg-gray-500" width={250} height={250} src={oauth_profile_picture}/>
                     {/* <img className="w-24 h-24 mb-3 rounded-full shadow-lg" src="/docs/images/people/profile-picture-3.jpg" alt="Bonnie image"/> */}
-                    <h5 className="mb-1 text-2xl font-medium text-gray-900 dark:text-white mt-5">{oauth_display_name}</h5>
+                    <h5 className="mb-1 text-2xl font-medium text-white mt-5">{oauth_display_name}</h5>
                     <span className="text-sm text-gray-500 dark:text-gray-400">PIOKI - Membership</span>
                     <div className="flex mt-4 md:mt-6 flex-col gap-3">
-                        <a className="select-none py-2 px-4 ms-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Total Coin Earned: {coin_amount}</a>
+                        <a className="select-none py-2 px-4 ms-2 text-sm font-medium focus:outline-none rounded-lg border focus:z-10 focus:ring-4 focus:ring-gray-700 bg-gray-800 text-gray-400 border-gray-600 hover:text-white hover:bg-gray-700">Total Coin Earned: {coin_amount}</a>
                         {!isSelf ? <FriendButton relationshipStatus={status} sendFriendRequest={sendFriendRequsetAction}/> : null}
                     </div>
                 </div>
