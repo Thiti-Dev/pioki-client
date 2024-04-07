@@ -2,12 +2,14 @@
 
 import EmptyIndicator from "@/components/common/empty-indicator"
 import LoadingIndicator from "@/components/common/loading-indicator"
+import LoadingPrepend from "@/components/common/loading-prepend"
 import { PIOKIApiResponse } from "@/shared/interfaces/common.interface"
 import { Post } from "@/shared/interfaces/post.interface"
 import { workBench } from "@/utils/font"
 import { useEffect, useLayoutEffect, useMemo, useState } from "react"
 
 export default function PostFeed({user_id}: {user_id: string}){
+    const [isKeepingPost, setIsKeepingPost] = useState(false)
     const [posts,setPosts] = useState<Post[]| null>(null)
     const [keptPostIds,setKeptPostIds] = useState<Record<string,boolean>>({})
     // const [mappedPostOwnedByPostId, setMappedPostOwnedByPostId] = useState<Record<number,boolean>>({})
@@ -28,7 +30,10 @@ export default function PostFeed({user_id}: {user_id: string}){
     },[])
 
     async function onPostKeepHandler(postID:number){
+        if(isKeepingPost) return
+        setIsKeepingPost(true)
         const res = await fetch(`/api/posts/${postID}/keep`,{method:'POST'})
+        setIsKeepingPost(false)
         if(!res.ok){
             const error = await res.json()
             console.log(error)
@@ -81,10 +86,12 @@ export default function PostFeed({user_id}: {user_id: string}){
                                         <div
                                             className="absolute transitiona-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt">
                                         </div>
-                                        <a onClick={() => onPostKeepHandler(post.id)} title="Get quote now" 
+                                        <button onClick={() => onPostKeepHandler(post.id)} title="Get quote now" 
                                             className={`relative inline-flex items-center justify-center px-5 py-2 text-xs font-bold text-black transition-all duration-200 bg-white font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900`}
-                                            role="button"> Keep
-                                        </a>
+                                            role="button"> 
+                                            {isKeepingPost ? <LoadingPrepend/> : null}
+                                            Keep
+                                        </button>
                                     </div>
                             </div>
                         : null}

@@ -2,6 +2,7 @@
 import { getPostFeedsServerAction } from "@/actions/me"
 import EmptyIndicator from "@/components/common/empty-indicator";
 import LoadingIndicator from "@/components/common/loading-indicator";
+import LoadingPrepend from "@/components/common/loading-prepend";
 import { FeedPost, Post } from "@/shared/interfaces/post.interface"
 import { workBench } from "@/utils/font";
 import Image from "next/image";
@@ -11,6 +12,7 @@ import { SyntheticEvent, useEffect, useMemo, useRef, useState } from "react"
 import Moment from 'react-moment';
 
 export default function FeedList(){
+    const [isKeepingPost, setIsKeepingPost] = useState(false)
     const ENCRYPTED_STRING = "#!@#$%-System-Encrypted-#!@#$%"
     const FAKE_LOAD_INTERVAL_MILLISECOND = 800;
     const CONSUME_SIZE = 5
@@ -59,7 +61,10 @@ export default function FeedList(){
     },[])
 
     async function onPostKeepHandler(postID:number){
+        if(isKeepingPost) return
+        setIsKeepingPost(true)
         const res = await fetch(`/api/posts/${postID}/keep`,{method:'POST'})
+        setIsKeepingPost(false)
         if(!res.ok) return // check if it is a transaction fail due to race condition
 
         // On keep success
@@ -94,7 +99,9 @@ export default function FeedList(){
                         </div>
                         <a onClick={() => onPostKeepHandler(feed.id)}  title="Get quote now" 
                             className={`active:bg-gray-200 select-none relative inline-flex items-center justify-center px-5 py-2 text-xs font-bold text-black transition-all duration-200 bg-white font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900`}
-                            role="button"> Keep
+                            role="button"> 
+                            {isKeepingPost ? <LoadingPrepend/> : null}
+                            Keep
                         </a>
                     </div>
                 </div>

@@ -10,15 +10,19 @@ import Typewriter from 'typewriter-effect';
 import Link from "next/link"
 import LoadingIndicator from "@/components/common/loading-indicator"
 import EmptyIndicator from "@/components/common/empty-indicator"
+import LoadingPrepend from "@/components/common/loading-prepend"
 
 export default function ListKeptPosts(){
-
+    const [isKeepingPost, setIsKeepingPost] = useState(false)
     const [keptPosts,setKeptPosts] = useState<{userData: UserData, postDatas:KeptPost[] }[] | null>(null)
     const [currentlySeeking,setCurrentlySeeking] = useState<number|null>(null)
     const [isExtraPanelReady, setIsExtraPanelReady] = useState<boolean>(false)
 
     async function onPassAlongPostHandler(postID: number, d1: number, d2:number){
+        if(isKeepingPost) return
+        setIsKeepingPost(true)
         const res = await fetch(`/api/posts/${postID}/pass`,{method:"POST"})
+        setIsKeepingPost(false)
         if(!res.ok) return // TODO: alert smth
 
         // TODO: playing fadeout animation first and then remove it from the dom
@@ -97,6 +101,7 @@ export default function ListKeptPosts(){
                         
                             <div className="flex flex-row gap-2">
                                 <button onClick={() => onPassAlongPostHandler(post.post_data.id,data_index,post_index)} className="bg-bg font-bold text-center py-2 px-[15px] text-sm border-2 border-black rounded-md shadow-yellow py-1 px-1  hover:bg-yellow-300 focus:outline-none bg-yellow">
+                                {isKeepingPost ? <LoadingPrepend/> : null}
                                 🫴 Pass along . . .
                                 </button>
 
