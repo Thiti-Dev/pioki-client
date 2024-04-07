@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { SessionProvider } from "@/providers/next-auth";
+import NextTopLoader from 'nextjs-toploader';
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -19,7 +20,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <SessionProvider>
-        <body className={inter.className}>{children}</body>
+        <body className={inter.className}>
+          <NextTopLoader showSpinner={false} color="#9c08ff" />
+          {children}
+          </body>
       </SessionProvider>
     </html>
   );
